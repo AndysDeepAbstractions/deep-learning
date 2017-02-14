@@ -56,8 +56,26 @@ trainables = [W1, b1, W2, b2]
 print("Total number of examples = {}".format(m))
 
 # Step 4
-learning_rate=1e-3
+t1 = 1/1000
+t2 = t1 / 1.05
+learning_rate = 0.1
+
+loss = 0
+lossprev = loss
+loss_delta_rel = 1
+loss_delta_rel_xa1 = 1
+loss_delta_rel_xa2 = 1
+loss_delta_rel_xa_rel = 1
 for i in range(epochs):
+    
+    if (lossprev > 0):
+        loss_delta_rel     = lossprev/loss
+        loss_delta_rel_xa1 = (loss_delta_rel_xa1 * 1-(t1)) + (loss_delta_rel * (t1))
+        loss_delta_rel_xa2 = (loss_delta_rel_xa2 * 1-(t2)) + (loss_delta_rel * (t2))
+        loss_delta_rel_xa_rel = loss_delta_rel_xa2 / loss_delta_rel_xa1
+        learning_rate      = learning_rate * loss_delta_rel_xa_rel
+    
+    lossprev = loss
     loss = 0
     for j in range(steps_per_epoch):
         # Step 1
@@ -76,4 +94,5 @@ for i in range(epochs):
 
         loss += graph[-1].value
 
-    print("Epoch: {}, Loss: {:.3f}".format(i+1, loss/steps_per_epoch))
+
+    print("Epoch: {}, Loss: {:.3f}, delta_rel: {:.3f}, xa_rel: {:.6f} lr: {:.6f}".format(i+1, loss/steps_per_epoch, loss_delta_rel, loss_delta_rel_xa_rel, learning_rate))
