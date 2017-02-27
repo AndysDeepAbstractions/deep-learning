@@ -12125,7 +12125,7 @@ height=250
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">one_hot_encode</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -12145,18 +12145,17 @@ height=250
     <span class="n">encoder</span> <span class="o">=</span> <span class="n">LabelBinarizer</span><span class="p">()</span>
     <span class="n">encoder</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;encoder.classes_ : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">encoder</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x[0:12]          : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">]))</span>
+    <span class="c1">#print(&quot;encoder.classes_ : {}&quot;.format(encoder.classes_))</span>
+    <span class="c1">#print(&quot;x[0:12]          : {}&quot;.format(x[0:12]))</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="c1"># Change to float32, so it can be multiplied against the features in TensorFlow, which are float32</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 
+    <span class="c1">#print(&quot;x[0:12]          : \n{}&quot;.format(x[0:12]))</span>
+    <span class="c1">#print(&quot;\ntype is : {} should be : {} ?&quot;.format(type(x).__module__,np.__name__))</span>
     
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x[0:12]          : </span><span class="se">\n</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">12</span><span class="p">]))</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">type is : </span><span class="si">{}</span><span class="s2"> should be : </span><span class="si">{}</span><span class="s2"> ?&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">__module__</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
-    <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">x</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -12177,47 +12176,8 @@ height=250
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [6 6 3 0 4 3 2 1 1 8 7 3]
-x[0:12]          : 
-[[ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]]
-
-type is : numpy should be : numpy ?
+<pre>Tests Passed
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-6-eea9e8c2beb6&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     33</span> DON<span class="ansi-red-fg">&#39;</span>T MODIFY ANYTHING IN THIS CELL THAT IS BELOW THIS LINE
-<span class="ansi-green-intense-fg ansi-bold">     34</span> &#34;&#34;&#34;
-<span class="ansi-green-fg">---&gt; 35</span><span class="ansi-red-fg"> </span>tests<span class="ansi-yellow-intense-fg ansi-bold">.</span>test_one_hot_encode<span class="ansi-yellow-intense-fg ansi-bold">(</span>one_hot_encode<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-fg">C:\Users\Andreas\Documents\GitHub\deep-learning\image-classification\problem_unittests.py</span> in <span class="ansi-cyan-fg">test_one_hot_encode</span><span class="ansi-blue-fg">(one_hot_encode)</span>
-<span class="ansi-green-intense-fg ansi-bold">     53</span> 
-<span class="ansi-green-intense-fg ansi-bold">     54</span>     <span class="ansi-green-intense-fg ansi-bold">assert</span> type<span class="ansi-yellow-intense-fg ansi-bold">(</span>one_hot_out<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>__module__ <span class="ansi-yellow-intense-fg ansi-bold">==</span> np<span class="ansi-yellow-intense-fg ansi-bold">.</span>__name__<span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-red-fg">\</span>
-<span class="ansi-green-fg">---&gt; 55</span><span class="ansi-red-fg">         </span><span class="ansi-blue-intense-fg ansi-bold">&#39;Not Numpy Object&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">     56</span> 
-<span class="ansi-green-intense-fg ansi-bold">     57</span>     <span class="ansi-green-intense-fg ansi-bold">assert</span> one_hot_out<span class="ansi-yellow-intense-fg ansi-bold">.</span>shape <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-yellow-intense-fg ansi-bold">(</span>test_shape<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-cyan-intense-fg ansi-bold">10</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span><span class="ansi-red-fg">\</span>
-
-<span class="ansi-red-fg">AssertionError</span>: Not Numpy Object</pre>
 </div>
 </div>
 
@@ -12247,7 +12207,7 @@ type is : numpy should be : numpy ?
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12258,140 +12218,6 @@ type is : numpy should be : numpy ?
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [6, 9, 9, 4, 1, 1, 2, 7, 8, 3, 4, 7]
-x[0:12]          : 
-[[ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  1.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  1.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]]
-
-type is : numpy should be : numpy ?
-encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [1, 6, 6, 8, 8, 3, 4, 6, 0, 6, 0, 3]
-x[0:12]          : 
-[[ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]]
-
-type is : numpy should be : numpy ?
-encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [8, 5, 0, 6, 9, 2, 8, 3, 6, 2, 7, 4]
-x[0:12]          : 
-[[ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  0.  0.  1.  0.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  1.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]]
-
-type is : numpy should be : numpy ?
-encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [0, 6, 0, 2, 7, 2, 1, 2, 4, 1, 5, 6]
-x[0:12]          : 
-[[ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  1.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]]
-
-type is : numpy should be : numpy ?
-encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [1, 8, 5, 1, 5, 7, 4, 3, 8, 2, 7, 2]
-x[0:12]          : 
-[[ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  0.  0.  1.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  1.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  1.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]]
-
-type is : numpy should be : numpy ?
-encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [4 2 2 9 0 3 3 1 3 0 4 2]
-x[0:12]          : 
-[[ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  1.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  1.  0.  0.  0.  0.  0.]
- [ 0.  0.  1.  0.  0.  0.  0.  0.  0.  0.]]
-
-type is : numpy should be : numpy ?
-encoder.classes_ : [0 1 2 3 4 5 6 7 8 9]
-x[0:12]          : [3 8 8 0 6 6 1 6 3 1 0 9]
-x[0:12]          : 
-[[ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  1.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  1.  0.  0.  0.]
- [ 0.  0.  0.  1.  0.  0.  0.  0.  0.  0.]
- [ 0.  1.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 1.  0.  0.  0.  0.  0.  0.  0.  0.  0.]
- [ 0.  0.  0.  0.  0.  0.  0.  0.  0.  1.]]
-
-type is : numpy should be : numpy ?
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -12408,7 +12234,7 @@ type is : numpy should be : numpy ?
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12463,7 +12289,7 @@ type is : numpy should be : numpy ?
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -12560,7 +12386,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">conv2d_maxpool</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">conv_num_outputs</span><span class="p">,</span> <span class="n">conv_ksize</span><span class="p">,</span> <span class="n">conv_strides</span><span class="p">,</span> <span class="n">pool_ksize</span><span class="p">,</span> <span class="n">pool_strides</span><span class="p">):</span>
@@ -12644,7 +12470,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">):</span>
@@ -12703,7 +12529,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">fully_conn</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">):</span>
@@ -12758,7 +12584,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">):</span>
@@ -12819,7 +12645,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">conv_net</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">keep_prob</span><span class="p">):</span>
@@ -12836,12 +12662,14 @@ Keep Prob Tests Passed.
     
     <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">x</span>         <span class="c1">#:param x_tensor: TensorFlow Tensor</span>
     <span class="n">conv_num_outputs</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1">#:param conv_num_outputs: Number of outputs for the convolutional layer</span>
-    <span class="n">conv_strides</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#:param conv_strides: Stride 2-D Tuple for convolution</span>
+    <span class="n">conv_strides</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#:param conv_strides: Stride 2-D Tuple for convolution</span>
     <span class="n">pool_ksize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>   <span class="c1">#:param pool_ksize: kernal size 2-D Tuple for pool</span>
     <span class="n">pool_strides</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#:param pool_strides: Stride 2-D Tuple for pool</span>
     <span class="n">conv_ksize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    
     <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">conv2d_maxpool</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">conv_num_outputs</span><span class="p">,</span> <span class="n">conv_ksize</span><span class="p">,</span> <span class="n">conv_strides</span><span class="p">,</span> <span class="n">pool_ksize</span><span class="p">,</span> <span class="n">pool_strides</span><span class="p">)</span>
+    <span class="n">conv_num_outputs</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1">#:param conv_num_outputs: Number of outputs for the convolutional layer</span>
+    <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">conv2d_maxpool</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">conv_num_outputs</span><span class="p">,</span> <span class="n">conv_ksize</span><span class="p">,</span> <span class="n">conv_strides</span><span class="p">,</span> <span class="n">pool_ksize</span><span class="p">,</span> <span class="n">pool_strides</span><span class="p">)</span>
+    <span class="n">conv_num_outputs</span> <span class="o">=</span> <span class="mi">16</span> <span class="c1">#:param conv_num_outputs: Number of outputs for the convolutional layer</span>
     <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">conv2d_maxpool</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">conv_num_outputs</span><span class="p">,</span> <span class="n">conv_ksize</span><span class="p">,</span> <span class="n">conv_strides</span><span class="p">,</span> <span class="n">pool_ksize</span><span class="p">,</span> <span class="n">pool_strides</span><span class="p">)</span>
 
     <span class="c1"># TODO: Apply a Flatten Layer</span>
@@ -12854,6 +12682,8 @@ Keep Prob Tests Passed.
     <span class="c1"># Function Definition from Above:</span>
     <span class="c1">#   </span>
     <span class="n">num_outputs</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">fully_conn</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+    <span class="n">num_outputs</span> <span class="o">=</span> <span class="mi">15</span>
     <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">fully_conn</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
     <span class="n">num_outputs</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">x_tensor</span> <span class="o">=</span> <span class="n">fully_conn</span><span class="p">(</span><span class="n">x_tensor</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
@@ -12942,7 +12772,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">train_neural_network</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">keep_probability</span><span class="p">,</span> <span class="n">feature_batch</span><span class="p">,</span> <span class="n">label_batch</span><span class="p">):</span>
@@ -13008,7 +12838,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">feature_batch</span><span class="p">,</span> <span class="n">label_batch</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">):</span>
@@ -13023,13 +12853,15 @@ Keep Prob Tests Passed.
     <span class="c1"># TODO: Implement Function</span>
     
     <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">keep_prob</span><span class="p">:</span><span class="mf">1.</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="n">feature_batch</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">label_batch</span><span class="p">}</span>
+    
+    <span class="c1">#cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits, labels=y))</span>
+    <span class="c1">#optimizer = tf.train.AdamOptimizer().minimize(cost)</span>
 
     <span class="c1"># Calculate batch loss and accuracy</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cost</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
     
     <span class="c1"># Should this be done on validation data?</span>
     <span class="n">valid_acc</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="n">feed_dict</span><span class="p">)</span>
-    
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loss: </span><span class="si">{:&gt;10.4f}</span><span class="s1"> Validation Accuracy: </span><span class="si">{:.6f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span><span class="n">valid_acc</span><span class="p">))</span>
             
     <span class="c1">#pass</span>
@@ -13063,13 +12895,13 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Tune Parameters</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">111</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
-<span class="n">keep_probability</span> <span class="o">=</span> <span class="mf">0.85</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">222</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">keep_probability</span> <span class="o">=</span> <span class="mf">0.9</span>
 </pre></div>
 
 </div>
@@ -13089,7 +12921,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13122,32 +12954,229 @@ Keep Prob Tests Passed.
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Checking the Training on a Single Batch...
+Epoch  1, CIFAR-10 Batch 1:  Loss:     2.3515 Validation Accuracy: 0.096535
+Epoch  2, CIFAR-10 Batch 1:  Loss:     2.3241 Validation Accuracy: 0.080446
+Epoch  3, CIFAR-10 Batch 1:  Loss:     2.3117 Validation Accuracy: 0.120050
+Epoch  4, CIFAR-10 Batch 1:  Loss:     2.3046 Validation Accuracy: 0.121287
+Epoch  5, CIFAR-10 Batch 1:  Loss:     2.2992 Validation Accuracy: 0.147277
+Epoch  6, CIFAR-10 Batch 1:  Loss:     2.2965 Validation Accuracy: 0.129950
+Epoch  7, CIFAR-10 Batch 1:  Loss:     2.2940 Validation Accuracy: 0.110149
+Epoch  8, CIFAR-10 Batch 1:  Loss:     2.2923 Validation Accuracy: 0.111386
+Epoch  9, CIFAR-10 Batch 1:  Loss:     2.2915 Validation Accuracy: 0.110149
+Epoch 10, CIFAR-10 Batch 1:  Loss:     2.2909 Validation Accuracy: 0.116337
+Epoch 11, CIFAR-10 Batch 1:  Loss:     2.2899 Validation Accuracy: 0.120050
+Epoch 12, CIFAR-10 Batch 1:  Loss:     2.2885 Validation Accuracy: 0.131188
+Epoch 13, CIFAR-10 Batch 1:  Loss:     2.2876 Validation Accuracy: 0.112624
+Epoch 14, CIFAR-10 Batch 1:  Loss:     2.2867 Validation Accuracy: 0.121287
+Epoch 15, CIFAR-10 Batch 1:  Loss:     2.2853 Validation Accuracy: 0.096535
+Epoch 16, CIFAR-10 Batch 1:  Loss:     2.2819 Validation Accuracy: 0.117574
+Epoch 17, CIFAR-10 Batch 1:  Loss:     2.2794 Validation Accuracy: 0.121287
+Epoch 18, CIFAR-10 Batch 1:  Loss:     2.2747 Validation Accuracy: 0.111386
+Epoch 19, CIFAR-10 Batch 1:  Loss:     2.2713 Validation Accuracy: 0.115099
+Epoch 20, CIFAR-10 Batch 1:  Loss:     2.2657 Validation Accuracy: 0.116337
+Epoch 21, CIFAR-10 Batch 1:  Loss:     2.2592 Validation Accuracy: 0.117574
+Epoch 22, CIFAR-10 Batch 1:  Loss:     2.2499 Validation Accuracy: 0.133663
+Epoch 23, CIFAR-10 Batch 1:  Loss:     2.2385 Validation Accuracy: 0.148515
+Epoch 24, CIFAR-10 Batch 1:  Loss:     2.2230 Validation Accuracy: 0.157178
+Epoch 25, CIFAR-10 Batch 1:  Loss:     2.2152 Validation Accuracy: 0.158416
+Epoch 26, CIFAR-10 Batch 1:  Loss:     2.2065 Validation Accuracy: 0.168317
+Epoch 27, CIFAR-10 Batch 1:  Loss:     2.1927 Validation Accuracy: 0.172030
+Epoch 28, CIFAR-10 Batch 1:  Loss:     2.1850 Validation Accuracy: 0.176980
+Epoch 29, CIFAR-10 Batch 1:  Loss:     2.1735 Validation Accuracy: 0.174505
+Epoch 30, CIFAR-10 Batch 1:  Loss:     2.1622 Validation Accuracy: 0.183168
+Epoch 31, CIFAR-10 Batch 1:  Loss:     2.1546 Validation Accuracy: 0.185644
+Epoch 32, CIFAR-10 Batch 1:  Loss:     2.1399 Validation Accuracy: 0.199257
+Epoch 33, CIFAR-10 Batch 1:  Loss:     2.1237 Validation Accuracy: 0.200495
+Epoch 34, CIFAR-10 Batch 1:  Loss:     2.1081 Validation Accuracy: 0.198020
+Epoch 35, CIFAR-10 Batch 1:  Loss:     2.0994 Validation Accuracy: 0.209158
+Epoch 36, CIFAR-10 Batch 1:  Loss:     2.0827 Validation Accuracy: 0.219059
+Epoch 37, CIFAR-10 Batch 1:  Loss:     2.0678 Validation Accuracy: 0.211634
+Epoch 38, CIFAR-10 Batch 1:  Loss:     2.0538 Validation Accuracy: 0.222772
+Epoch 39, CIFAR-10 Batch 1:  Loss:     2.0386 Validation Accuracy: 0.241337
+Epoch 40, CIFAR-10 Batch 1:  Loss:     2.0321 Validation Accuracy: 0.246287
+Epoch 41, CIFAR-10 Batch 1:  Loss:     2.0141 Validation Accuracy: 0.263614
+Epoch 42, CIFAR-10 Batch 1:  Loss:     2.0115 Validation Accuracy: 0.254950
+Epoch 43, CIFAR-10 Batch 1:  Loss:     1.9940 Validation Accuracy: 0.263614
+Epoch 44, CIFAR-10 Batch 1:  Loss:     1.9911 Validation Accuracy: 0.252475
+Epoch 45, CIFAR-10 Batch 1:  Loss:     1.9752 Validation Accuracy: 0.273515
+Epoch 46, CIFAR-10 Batch 1:  Loss:     1.9700 Validation Accuracy: 0.272277
+Epoch 47, CIFAR-10 Batch 1:  Loss:     1.9568 Validation Accuracy: 0.279703
+Epoch 48, CIFAR-10 Batch 1:  Loss:     1.9496 Validation Accuracy: 0.279703
+Epoch 49, CIFAR-10 Batch 1:  Loss:     1.9395 Validation Accuracy: 0.283416
+Epoch 50, CIFAR-10 Batch 1:  Loss:     1.9269 Validation Accuracy: 0.293317
+Epoch 51, CIFAR-10 Batch 1:  Loss:     1.9210 Validation Accuracy: 0.294554
+Epoch 52, CIFAR-10 Batch 1:  Loss:     1.9125 Validation Accuracy: 0.298267
+Epoch 53, CIFAR-10 Batch 1:  Loss:     1.9074 Validation Accuracy: 0.298267
+Epoch 54, CIFAR-10 Batch 1:  Loss:     1.8988 Validation Accuracy: 0.310644
+Epoch 55, CIFAR-10 Batch 1:  Loss:     1.8913 Validation Accuracy: 0.309406
+Epoch 56, CIFAR-10 Batch 1:  Loss:     1.8843 Validation Accuracy: 0.310644
+Epoch 57, CIFAR-10 Batch 1:  Loss:     1.8780 Validation Accuracy: 0.306931
+Epoch 58, CIFAR-10 Batch 1:  Loss:     1.8735 Validation Accuracy: 0.311881
+Epoch 59, CIFAR-10 Batch 1:  Loss:     1.8695 Validation Accuracy: 0.313119
+Epoch 60, CIFAR-10 Batch 1:  Loss:     1.8644 Validation Accuracy: 0.315594
+Epoch 61, CIFAR-10 Batch 1:  Loss:     1.8596 Validation Accuracy: 0.316832
+Epoch 62, CIFAR-10 Batch 1:  Loss:     1.8546 Validation Accuracy: 0.325495
+Epoch 63, CIFAR-10 Batch 1:  Loss:     1.8515 Validation Accuracy: 0.323020
+Epoch 64, CIFAR-10 Batch 1:  Loss:     1.8472 Validation Accuracy: 0.325495
+Epoch 65, CIFAR-10 Batch 1:  Loss:     1.8445 Validation Accuracy: 0.326733
+Epoch 66, CIFAR-10 Batch 1:  Loss:     1.8407 Validation Accuracy: 0.324257
+Epoch 67, CIFAR-10 Batch 1:  Loss:     1.8371 Validation Accuracy: 0.330446
+Epoch 68, CIFAR-10 Batch 1:  Loss:     1.8350 Validation Accuracy: 0.336634
+Epoch 69, CIFAR-10 Batch 1:  Loss:     1.8303 Validation Accuracy: 0.332921
+Epoch 70, CIFAR-10 Batch 1:  Loss:     1.8275 Validation Accuracy: 0.336634
+Epoch 71, CIFAR-10 Batch 1:  Loss:     1.8234 Validation Accuracy: 0.340347
+Epoch 72, CIFAR-10 Batch 1:  Loss:     1.8205 Validation Accuracy: 0.340347
+Epoch 73, CIFAR-10 Batch 1:  Loss:     1.8166 Validation Accuracy: 0.341584
+Epoch 74, CIFAR-10 Batch 1:  Loss:     1.8118 Validation Accuracy: 0.341584
+Epoch 75, CIFAR-10 Batch 1:  Loss:     1.8091 Validation Accuracy: 0.345297
+Epoch 76, CIFAR-10 Batch 1:  Loss:     1.8051 Validation Accuracy: 0.350248
+Epoch 77, CIFAR-10 Batch 1:  Loss:     1.8021 Validation Accuracy: 0.355198
+Epoch 78, CIFAR-10 Batch 1:  Loss:     1.7952 Validation Accuracy: 0.357673
+Epoch 79, CIFAR-10 Batch 1:  Loss:     1.7928 Validation Accuracy: 0.360149
+Epoch 80, CIFAR-10 Batch 1:  Loss:     1.7875 Validation Accuracy: 0.362624
+Epoch 81, CIFAR-10 Batch 1:  Loss:     1.7854 Validation Accuracy: 0.349010
+Epoch 82, CIFAR-10 Batch 1:  Loss:     1.7867 Validation Accuracy: 0.346535
+Epoch 83, CIFAR-10 Batch 1:  Loss:     1.7919 Validation Accuracy: 0.351485
+Epoch 84, CIFAR-10 Batch 1:  Loss:     1.7855 Validation Accuracy: 0.351485
+Epoch 85, CIFAR-10 Batch 1:  Loss:     1.7749 Validation Accuracy: 0.350248
+Epoch 86, CIFAR-10 Batch 1:  Loss:     1.7622 Validation Accuracy: 0.346535
+Epoch 87, CIFAR-10 Batch 1:  Loss:     1.7471 Validation Accuracy: 0.344059
+Epoch 88, CIFAR-10 Batch 1:  Loss:     1.7350 Validation Accuracy: 0.358911
+Epoch 89, CIFAR-10 Batch 1:  Loss:     1.7238 Validation Accuracy: 0.367574
+Epoch 90, CIFAR-10 Batch 1:  Loss:     1.7156 Validation Accuracy: 0.362624
+Epoch 91, CIFAR-10 Batch 1:  Loss:     1.7063 Validation Accuracy: 0.367574
+Epoch 92, CIFAR-10 Batch 1:  Loss:     1.6994 Validation Accuracy: 0.376238
+Epoch 93, CIFAR-10 Batch 1:  Loss:     1.6938 Validation Accuracy: 0.379950
+Epoch 94, CIFAR-10 Batch 1:  Loss:     1.6878 Validation Accuracy: 0.383663
+Epoch 95, CIFAR-10 Batch 1:  Loss:     1.6829 Validation Accuracy: 0.384901
+Epoch 96, CIFAR-10 Batch 1:  Loss:     1.6785 Validation Accuracy: 0.392327
+Epoch 97, CIFAR-10 Batch 1:  Loss:     1.6729 Validation Accuracy: 0.393564
+Epoch 98, CIFAR-10 Batch 1:  Loss:     1.6667 Validation Accuracy: 0.398515
+Epoch 99, CIFAR-10 Batch 1:  Loss:     1.6623 Validation Accuracy: 0.398515
+Epoch 100, CIFAR-10 Batch 1:  Loss:     1.6578 Validation Accuracy: 0.394802
+Epoch 101, CIFAR-10 Batch 1:  Loss:     1.6513 Validation Accuracy: 0.396040
+Epoch 102, CIFAR-10 Batch 1:  Loss:     1.6471 Validation Accuracy: 0.397277
+Epoch 103, CIFAR-10 Batch 1:  Loss:     1.6433 Validation Accuracy: 0.400990
+Epoch 104, CIFAR-10 Batch 1:  Loss:     1.6375 Validation Accuracy: 0.402228
+Epoch 105, CIFAR-10 Batch 1:  Loss:     1.6333 Validation Accuracy: 0.408416
+Epoch 106, CIFAR-10 Batch 1:  Loss:     1.6283 Validation Accuracy: 0.412129
+Epoch 107, CIFAR-10 Batch 1:  Loss:     1.6235 Validation Accuracy: 0.413366
+Epoch 108, CIFAR-10 Batch 1:  Loss:     1.6187 Validation Accuracy: 0.414604
+Epoch 109, CIFAR-10 Batch 1:  Loss:     1.6151 Validation Accuracy: 0.418317
+Epoch 110, CIFAR-10 Batch 1:  Loss:     1.6090 Validation Accuracy: 0.419554
+Epoch 111, CIFAR-10 Batch 1:  Loss:     1.6038 Validation Accuracy: 0.418317
+Epoch 112, CIFAR-10 Batch 1:  Loss:     1.5999 Validation Accuracy: 0.418317
+Epoch 113, CIFAR-10 Batch 1:  Loss:     1.5955 Validation Accuracy: 0.417079
+Epoch 114, CIFAR-10 Batch 1:  Loss:     1.5915 Validation Accuracy: 0.414604
+Epoch 115, CIFAR-10 Batch 1:  Loss:     1.5877 Validation Accuracy: 0.422030
+Epoch 116, CIFAR-10 Batch 1:  Loss:     1.5839 Validation Accuracy: 0.420792
+Epoch 117, CIFAR-10 Batch 1:  Loss:     1.5795 Validation Accuracy: 0.429455
+Epoch 118, CIFAR-10 Batch 1:  Loss:     1.5749 Validation Accuracy: 0.426980
+Epoch 119, CIFAR-10 Batch 1:  Loss:     1.5713 Validation Accuracy: 0.425743
+Epoch 120, CIFAR-10 Batch 1:  Loss:     1.5689 Validation Accuracy: 0.426980
+Epoch 121, CIFAR-10 Batch 1:  Loss:     1.5647 Validation Accuracy: 0.433168
+Epoch 122, CIFAR-10 Batch 1:  Loss:     1.5621 Validation Accuracy: 0.436881
+Epoch 123, CIFAR-10 Batch 1:  Loss:     1.5586 Validation Accuracy: 0.448020
+Epoch 124, CIFAR-10 Batch 1:  Loss:     1.5582 Validation Accuracy: 0.445545
+Epoch 125, CIFAR-10 Batch 1:  Loss:     1.5535 Validation Accuracy: 0.445545
+Epoch 126, CIFAR-10 Batch 1:  Loss:     1.5500 Validation Accuracy: 0.449257
+Epoch 127, CIFAR-10 Batch 1:  Loss:     1.5452 Validation Accuracy: 0.451733
+Epoch 128, CIFAR-10 Batch 1:  Loss:     1.5434 Validation Accuracy: 0.450495
+Epoch 129, CIFAR-10 Batch 1:  Loss:     1.5385 Validation Accuracy: 0.451733
+Epoch 130, CIFAR-10 Batch 1:  Loss:     1.5360 Validation Accuracy: 0.450495
+Epoch 131, CIFAR-10 Batch 1:  Loss:     1.5317 Validation Accuracy: 0.449257
+Epoch 132, CIFAR-10 Batch 1:  Loss:     1.5299 Validation Accuracy: 0.451733
+Epoch 133, CIFAR-10 Batch 1:  Loss:     1.5261 Validation Accuracy: 0.446782
+Epoch 134, CIFAR-10 Batch 1:  Loss:     1.5247 Validation Accuracy: 0.445545
+Epoch 135, CIFAR-10 Batch 1:  Loss:     1.5215 Validation Accuracy: 0.450495
+Epoch 136, CIFAR-10 Batch 1:  Loss:     1.5189 Validation Accuracy: 0.450495
+Epoch 137, CIFAR-10 Batch 1:  Loss:     1.5151 Validation Accuracy: 0.456683
+Epoch 138, CIFAR-10 Batch 1:  Loss:     1.5143 Validation Accuracy: 0.460396
+Epoch 139, CIFAR-10 Batch 1:  Loss:     1.5119 Validation Accuracy: 0.455446
+Epoch 140, CIFAR-10 Batch 1:  Loss:     1.5098 Validation Accuracy: 0.459158
+Epoch 141, CIFAR-10 Batch 1:  Loss:     1.5081 Validation Accuracy: 0.459158
+Epoch 142, CIFAR-10 Batch 1:  Loss:     1.5072 Validation Accuracy: 0.461634
+Epoch 143, CIFAR-10 Batch 1:  Loss:     1.5045 Validation Accuracy: 0.457921
+Epoch 144, CIFAR-10 Batch 1:  Loss:     1.5026 Validation Accuracy: 0.464109
+Epoch 145, CIFAR-10 Batch 1:  Loss:     1.5006 Validation Accuracy: 0.464109
+Epoch 146, CIFAR-10 Batch 1:  Loss:     1.4976 Validation Accuracy: 0.466584
+Epoch 147, CIFAR-10 Batch 1:  Loss:     1.4945 Validation Accuracy: 0.465347
+Epoch 148, CIFAR-10 Batch 1:  Loss:     1.4907 Validation Accuracy: 0.466584
+Epoch 149, CIFAR-10 Batch 1:  Loss:     1.4871 Validation Accuracy: 0.465347
+Epoch 150, CIFAR-10 Batch 1:  Loss:     1.4857 Validation Accuracy: 0.466584
+Epoch 151, CIFAR-10 Batch 1:  Loss:     1.4817 Validation Accuracy: 0.467822
+Epoch 152, CIFAR-10 Batch 1:  Loss:     1.4786 Validation Accuracy: 0.467822
+Epoch 153, CIFAR-10 Batch 1:  Loss:     1.4757 Validation Accuracy: 0.471535
+Epoch 154, CIFAR-10 Batch 1:  Loss:     1.4726 Validation Accuracy: 0.474010
+Epoch 155, CIFAR-10 Batch 1:  Loss:     1.4701 Validation Accuracy: 0.467822
+Epoch 156, CIFAR-10 Batch 1:  Loss:     1.4686 Validation Accuracy: 0.469059
+Epoch 157, CIFAR-10 Batch 1:  Loss:     1.4655 Validation Accuracy: 0.477723
+Epoch 158, CIFAR-10 Batch 1:  Loss:     1.4636 Validation Accuracy: 0.472772
+Epoch 159, CIFAR-10 Batch 1:  Loss:     1.4616 Validation Accuracy: 0.476485
+Epoch 160, CIFAR-10 Batch 1:  Loss:     1.4602 Validation Accuracy: 0.476485
+Epoch 161, CIFAR-10 Batch 1:  Loss:     1.4587 Validation Accuracy: 0.476485
+Epoch 162, CIFAR-10 Batch 1:  Loss:     1.4557 Validation Accuracy: 0.481436
+Epoch 163, CIFAR-10 Batch 1:  Loss:     1.4548 Validation Accuracy: 0.474010
+Epoch 164, CIFAR-10 Batch 1:  Loss:     1.4549 Validation Accuracy: 0.477723
+Epoch 165, CIFAR-10 Batch 1:  Loss:     1.4533 Validation Accuracy: 0.477723
+Epoch 166, CIFAR-10 Batch 1:  Loss:     1.4525 Validation Accuracy: 0.477723
+Epoch 167, CIFAR-10 Batch 1:  Loss:     1.4525 Validation Accuracy: 0.471535
+Epoch 168, CIFAR-10 Batch 1:  Loss:     1.4494 Validation Accuracy: 0.472772
+Epoch 169, CIFAR-10 Batch 1:  Loss:     1.4451 Validation Accuracy: 0.481436
+Epoch 170, CIFAR-10 Batch 1:  Loss:     1.4382 Validation Accuracy: 0.487624
+Epoch 171, CIFAR-10 Batch 1:  Loss:     1.4362 Validation Accuracy: 0.485149
+Epoch 172, CIFAR-10 Batch 1:  Loss:     1.4344 Validation Accuracy: 0.483911
+Epoch 173, CIFAR-10 Batch 1:  Loss:     1.4325 Validation Accuracy: 0.476485
+Epoch 174, CIFAR-10 Batch 1:  Loss:     1.4285 Validation Accuracy: 0.491337
+Epoch 175, CIFAR-10 Batch 1:  Loss:     1.4244 Validation Accuracy: 0.498762
+Epoch 176, CIFAR-10 Batch 1:  Loss:     1.4217 Validation Accuracy: 0.493812
+Epoch 177, CIFAR-10 Batch 1:  Loss:     1.4206 Validation Accuracy: 0.495050
+Epoch 178, CIFAR-10 Batch 1:  Loss:     1.4183 Validation Accuracy: 0.501238
+Epoch 179, CIFAR-10 Batch 1:  Loss:     1.4178 Validation Accuracy: 0.495050
+Epoch 180, CIFAR-10 Batch 1:  Loss:     1.4149 Validation Accuracy: 0.496287
+Epoch 181, CIFAR-10 Batch 1:  Loss:     1.4140 Validation Accuracy: 0.492574
+Epoch 182, CIFAR-10 Batch 1:  Loss:     1.4123 Validation Accuracy: 0.503713
+Epoch 183, CIFAR-10 Batch 1:  Loss:     1.4094 Validation Accuracy: 0.503713
+Epoch 184, CIFAR-10 Batch 1:  Loss:     1.4076 Validation Accuracy: 0.502475
+Epoch 185, CIFAR-10 Batch 1:  Loss:     1.4071 Validation Accuracy: 0.501238
+Epoch 186, CIFAR-10 Batch 1:  Loss:     1.4058 Validation Accuracy: 0.503713
+Epoch 187, CIFAR-10 Batch 1:  Loss:     1.4028 Validation Accuracy: 0.502475
+Epoch 188, CIFAR-10 Batch 1:  Loss:     1.4002 Validation Accuracy: 0.500000
+Epoch 189, CIFAR-10 Batch 1:  Loss:     1.3986 Validation Accuracy: 0.507426
+Epoch 190, CIFAR-10 Batch 1:  Loss:     1.3955 Validation Accuracy: 0.511139
+Epoch 191, CIFAR-10 Batch 1:  Loss:     1.3942 Validation Accuracy: 0.508663
+Epoch 192, CIFAR-10 Batch 1:  Loss:     1.3928 Validation Accuracy: 0.507426
+Epoch 193, CIFAR-10 Batch 1:  Loss:     1.3901 Validation Accuracy: 0.508663
+Epoch 194, CIFAR-10 Batch 1:  Loss:     1.3879 Validation Accuracy: 0.506188
+Epoch 195, CIFAR-10 Batch 1:  Loss:     1.3856 Validation Accuracy: 0.507426
+Epoch 196, CIFAR-10 Batch 1:  Loss:     1.3831 Validation Accuracy: 0.517327
+Epoch 197, CIFAR-10 Batch 1:  Loss:     1.3803 Validation Accuracy: 0.517327
+Epoch 198, CIFAR-10 Batch 1:  Loss:     1.3791 Validation Accuracy: 0.518564
+Epoch 199, CIFAR-10 Batch 1:  Loss:     1.3773 Validation Accuracy: 0.508663
+Epoch 200, CIFAR-10 Batch 1:  Loss:     1.3758 Validation Accuracy: 0.513614
+Epoch 201, CIFAR-10 Batch 1:  Loss:     1.3749 Validation Accuracy: 0.509901
+Epoch 202, CIFAR-10 Batch 1:  Loss:     1.3714 Validation Accuracy: 0.508663
+Epoch 203, CIFAR-10 Batch 1:  Loss:     1.3714 Validation Accuracy: 0.509901
+Epoch 204, CIFAR-10 Batch 1:  Loss:     1.3688 Validation Accuracy: 0.512376
+Epoch 205, CIFAR-10 Batch 1:  Loss:     1.3656 Validation Accuracy: 0.516089
+Epoch 206, CIFAR-10 Batch 1:  Loss:     1.3633 Validation Accuracy: 0.516089
+Epoch 207, CIFAR-10 Batch 1:  Loss:     1.3623 Validation Accuracy: 0.518564
+Epoch 208, CIFAR-10 Batch 1:  Loss:     1.3588 Validation Accuracy: 0.523515
+Epoch 209, CIFAR-10 Batch 1:  Loss:     1.3582 Validation Accuracy: 0.516089
+Epoch 210, CIFAR-10 Batch 1:  Loss:     1.3565 Validation Accuracy: 0.521040
+Epoch 211, CIFAR-10 Batch 1:  Loss:     1.3563 Validation Accuracy: 0.524752
+Epoch 212, CIFAR-10 Batch 1:  Loss:     1.3541 Validation Accuracy: 0.514852
+Epoch 213, CIFAR-10 Batch 1:  Loss:     1.3538 Validation Accuracy: 0.518564
+Epoch 214, CIFAR-10 Batch 1:  Loss:     1.3509 Validation Accuracy: 0.517327
+Epoch 215, CIFAR-10 Batch 1:  Loss:     1.3536 Validation Accuracy: 0.517327
+Epoch 216, CIFAR-10 Batch 1:  Loss:     1.3521 Validation Accuracy: 0.517327
+Epoch 217, CIFAR-10 Batch 1:  Loss:     1.3505 Validation Accuracy: 0.522277
+Epoch 218, CIFAR-10 Batch 1:  Loss:     1.3496 Validation Accuracy: 0.519802
+Epoch 219, CIFAR-10 Batch 1:  Loss:     1.3463 Validation Accuracy: 0.524752
+Epoch 220, CIFAR-10 Batch 1:  Loss:     1.3482 Validation Accuracy: 0.518564
+Epoch 221, CIFAR-10 Batch 1:  Loss:     1.3427 Validation Accuracy: 0.524752
+Epoch 222, CIFAR-10 Batch 1:  Loss:     1.3416 Validation Accuracy: 0.528465
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-18-0ebd1bbc35ad&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     10</span>     <span class="ansi-green-intense-fg ansi-bold">for</span> epoch <span class="ansi-green-intense-fg ansi-bold">in</span> range<span class="ansi-yellow-intense-fg ansi-bold">(</span>epochs<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     11</span>         batch_i <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span>
-<span class="ansi-green-fg">---&gt; 12</span><span class="ansi-red-fg">         </span><span class="ansi-green-intense-fg ansi-bold">for</span> batch_features<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_labels <span class="ansi-green-intense-fg ansi-bold">in</span> helper<span class="ansi-yellow-intense-fg ansi-bold">.</span>load_preprocess_training_batch<span class="ansi-yellow-intense-fg ansi-bold">(</span>batch_i<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_size<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     13</span>             train_neural_network<span class="ansi-yellow-intense-fg ansi-bold">(</span>sess<span class="ansi-yellow-intense-fg ansi-bold">,</span> optimizer<span class="ansi-yellow-intense-fg ansi-bold">,</span> keep_probability<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_features<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_labels<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     14</span>         print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;Epoch {:&gt;2}, CIFAR-10 Batch {}:  &#39;</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>format<span class="ansi-yellow-intense-fg ansi-bold">(</span>epoch <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_i<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> end<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-fg">C:\Users\Andreas\Documents\GitHub\deep-learning\image-classification\helper.py</span> in <span class="ansi-cyan-fg">batch_features_labels</span><span class="ansi-blue-fg">(features, labels, batch_size)</span>
-<span class="ansi-green-intense-fg ansi-bold">    122</span>     <span class="ansi-green-intense-fg ansi-bold">for</span> start <span class="ansi-green-intense-fg ansi-bold">in</span> range<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>features<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_size<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    123</span>         end <span class="ansi-yellow-intense-fg ansi-bold">=</span> min<span class="ansi-yellow-intense-fg ansi-bold">(</span>start <span class="ansi-yellow-intense-fg ansi-bold">+</span> batch_size<span class="ansi-yellow-intense-fg ansi-bold">,</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>features<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">--&gt; 124</span><span class="ansi-red-fg">         </span><span class="ansi-green-intense-fg ansi-bold">yield</span> features<span class="ansi-yellow-intense-fg ansi-bold">[</span>start<span class="ansi-yellow-intense-fg ansi-bold">:</span>end<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> labels<span class="ansi-yellow-intense-fg ansi-bold">[</span>start<span class="ansi-yellow-intense-fg ansi-bold">:</span>end<span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    125</span> 
-<span class="ansi-green-intense-fg ansi-bold">    126</span> 
-
-<span class="ansi-red-fg">TypeError</span>: &#39;NoneType&#39; object is not subscriptable</pre>
 </div>
 </div>
 
@@ -13167,7 +13196,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13208,32 +13237,206 @@ Keep Prob Tests Passed.
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Training...
+Epoch  1, CIFAR-10 Batch 1:  Loss:     2.3012 Validation Accuracy: 0.112624
+Epoch  1, CIFAR-10 Batch 2:  Loss:     2.3000 Validation Accuracy: 0.132426
+Epoch  1, CIFAR-10 Batch 3:  Loss:     2.2885 Validation Accuracy: 0.121287
+Epoch  1, CIFAR-10 Batch 4:  Loss:     2.2818 Validation Accuracy: 0.167079
+Epoch  1, CIFAR-10 Batch 5:  Loss:     2.2727 Validation Accuracy: 0.165842
+Epoch  2, CIFAR-10 Batch 1:  Loss:     2.2587 Validation Accuracy: 0.167079
+Epoch  2, CIFAR-10 Batch 2:  Loss:     2.2483 Validation Accuracy: 0.173267
+Epoch  2, CIFAR-10 Batch 3:  Loss:     2.2265 Validation Accuracy: 0.173267
+Epoch  2, CIFAR-10 Batch 4:  Loss:     2.1964 Validation Accuracy: 0.227723
+Epoch  2, CIFAR-10 Batch 5:  Loss:     2.2169 Validation Accuracy: 0.211634
+Epoch  3, CIFAR-10 Batch 1:  Loss:     2.1924 Validation Accuracy: 0.196782
+Epoch  3, CIFAR-10 Batch 2:  Loss:     2.1991 Validation Accuracy: 0.198020
+Epoch  3, CIFAR-10 Batch 3:  Loss:     2.1943 Validation Accuracy: 0.206683
+Epoch  3, CIFAR-10 Batch 4:  Loss:     2.1580 Validation Accuracy: 0.241337
+Epoch  3, CIFAR-10 Batch 5:  Loss:     2.1830 Validation Accuracy: 0.216584
+Epoch  4, CIFAR-10 Batch 1:  Loss:     2.1670 Validation Accuracy: 0.214109
+Epoch  4, CIFAR-10 Batch 2:  Loss:     2.1693 Validation Accuracy: 0.220297
+Epoch  4, CIFAR-10 Batch 3:  Loss:     2.1578 Validation Accuracy: 0.241337
+Epoch  4, CIFAR-10 Batch 4:  Loss:     2.1146 Validation Accuracy: 0.258663
+Epoch  4, CIFAR-10 Batch 5:  Loss:     2.1294 Validation Accuracy: 0.227723
+Epoch  5, CIFAR-10 Batch 1:  Loss:     2.1395 Validation Accuracy: 0.224010
+Epoch  5, CIFAR-10 Batch 2:  Loss:     2.1234 Validation Accuracy: 0.237624
+Epoch  5, CIFAR-10 Batch 3:  Loss:     2.1060 Validation Accuracy: 0.266089
+Epoch  5, CIFAR-10 Batch 4:  Loss:     2.0616 Validation Accuracy: 0.264851
+Epoch  5, CIFAR-10 Batch 5:  Loss:     2.0782 Validation Accuracy: 0.264851
+Epoch  6, CIFAR-10 Batch 1:  Loss:     2.0821 Validation Accuracy: 0.258663
+Epoch  6, CIFAR-10 Batch 2:  Loss:     2.0687 Validation Accuracy: 0.263614
+Epoch  6, CIFAR-10 Batch 3:  Loss:     2.0467 Validation Accuracy: 0.294554
+Epoch  6, CIFAR-10 Batch 4:  Loss:     2.0004 Validation Accuracy: 0.303218
+Epoch  6, CIFAR-10 Batch 5:  Loss:     2.0346 Validation Accuracy: 0.285891
+Epoch  7, CIFAR-10 Batch 1:  Loss:     2.0367 Validation Accuracy: 0.289604
+Epoch  7, CIFAR-10 Batch 2:  Loss:     2.0198 Validation Accuracy: 0.274752
+Epoch  7, CIFAR-10 Batch 3:  Loss:     1.9959 Validation Accuracy: 0.311881
+Epoch  7, CIFAR-10 Batch 4:  Loss:     1.9439 Validation Accuracy: 0.332921
+Epoch  7, CIFAR-10 Batch 5:  Loss:     1.9863 Validation Accuracy: 0.301980
+Epoch  8, CIFAR-10 Batch 1:  Loss:     1.9987 Validation Accuracy: 0.319307
+Epoch  8, CIFAR-10 Batch 2:  Loss:     1.9827 Validation Accuracy: 0.300743
+Epoch  8, CIFAR-10 Batch 3:  Loss:     1.9589 Validation Accuracy: 0.324257
+Epoch  8, CIFAR-10 Batch 4:  Loss:     1.8850 Validation Accuracy: 0.339109
+Epoch  8, CIFAR-10 Batch 5:  Loss:     1.9152 Validation Accuracy: 0.331683
+Epoch  9, CIFAR-10 Batch 1:  Loss:     1.9152 Validation Accuracy: 0.330446
+Epoch  9, CIFAR-10 Batch 2:  Loss:     1.8788 Validation Accuracy: 0.323020
+Epoch  9, CIFAR-10 Batch 3:  Loss:     1.8518 Validation Accuracy: 0.346535
+Epoch  9, CIFAR-10 Batch 4:  Loss:     1.8026 Validation Accuracy: 0.356436
+Epoch  9, CIFAR-10 Batch 5:  Loss:     1.8412 Validation Accuracy: 0.357673
+Epoch 10, CIFAR-10 Batch 1:  Loss:     1.8794 Validation Accuracy: 0.340347
+Epoch 10, CIFAR-10 Batch 2:  Loss:     1.8389 Validation Accuracy: 0.341584
+Epoch 10, CIFAR-10 Batch 3:  Loss:     1.8152 Validation Accuracy: 0.371287
+Epoch 10, CIFAR-10 Batch 4:  Loss:     1.7690 Validation Accuracy: 0.372525
+Epoch 10, CIFAR-10 Batch 5:  Loss:     1.7986 Validation Accuracy: 0.366337
+Epoch 11, CIFAR-10 Batch 1:  Loss:     1.8454 Validation Accuracy: 0.351485
+Epoch 11, CIFAR-10 Batch 2:  Loss:     1.7996 Validation Accuracy: 0.366337
+Epoch 11, CIFAR-10 Batch 3:  Loss:     1.7841 Validation Accuracy: 0.376238
+Epoch 11, CIFAR-10 Batch 4:  Loss:     1.7280 Validation Accuracy: 0.386139
+Epoch 11, CIFAR-10 Batch 5:  Loss:     1.7618 Validation Accuracy: 0.366337
+Epoch 12, CIFAR-10 Batch 1:  Loss:     1.8188 Validation Accuracy: 0.360149
+Epoch 12, CIFAR-10 Batch 2:  Loss:     1.7660 Validation Accuracy: 0.370050
+Epoch 12, CIFAR-10 Batch 3:  Loss:     1.7607 Validation Accuracy: 0.397277
+Epoch 12, CIFAR-10 Batch 4:  Loss:     1.7020 Validation Accuracy: 0.394802
+Epoch 12, CIFAR-10 Batch 5:  Loss:     1.7327 Validation Accuracy: 0.384901
+Epoch 13, CIFAR-10 Batch 1:  Loss:     1.7840 Validation Accuracy: 0.356436
+Epoch 13, CIFAR-10 Batch 2:  Loss:     1.7157 Validation Accuracy: 0.389851
+Epoch 13, CIFAR-10 Batch 3:  Loss:     1.7132 Validation Accuracy: 0.386139
+Epoch 13, CIFAR-10 Batch 4:  Loss:     1.6468 Validation Accuracy: 0.404703
+Epoch 13, CIFAR-10 Batch 5:  Loss:     1.6754 Validation Accuracy: 0.396040
+Epoch 14, CIFAR-10 Batch 1:  Loss:     1.7216 Validation Accuracy: 0.363861
+Epoch 14, CIFAR-10 Batch 2:  Loss:     1.6531 Validation Accuracy: 0.396040
+Epoch 14, CIFAR-10 Batch 3:  Loss:     1.6370 Validation Accuracy: 0.408416
+Epoch 14, CIFAR-10 Batch 4:  Loss:     1.5909 Validation Accuracy: 0.415842
+Epoch 14, CIFAR-10 Batch 5:  Loss:     1.6272 Validation Accuracy: 0.415842
+Epoch 15, CIFAR-10 Batch 1:  Loss:     1.6805 Validation Accuracy: 0.387376
+Epoch 15, CIFAR-10 Batch 2:  Loss:     1.6165 Validation Accuracy: 0.419554
+Epoch 15, CIFAR-10 Batch 3:  Loss:     1.5938 Validation Accuracy: 0.409653
+Epoch 15, CIFAR-10 Batch 4:  Loss:     1.5630 Validation Accuracy: 0.419554
+Epoch 15, CIFAR-10 Batch 5:  Loss:     1.6004 Validation Accuracy: 0.428218
+Epoch 16, CIFAR-10 Batch 1:  Loss:     1.6501 Validation Accuracy: 0.394802
+Epoch 16, CIFAR-10 Batch 2:  Loss:     1.5923 Validation Accuracy: 0.423267
+Epoch 16, CIFAR-10 Batch 3:  Loss:     1.5684 Validation Accuracy: 0.417079
+Epoch 16, CIFAR-10 Batch 4:  Loss:     1.5473 Validation Accuracy: 0.420792
+Epoch 16, CIFAR-10 Batch 5:  Loss:     1.5856 Validation Accuracy: 0.434406
+Epoch 17, CIFAR-10 Batch 1:  Loss:     1.6376 Validation Accuracy: 0.391089
+Epoch 17, CIFAR-10 Batch 2:  Loss:     1.5729 Validation Accuracy: 0.420792
+Epoch 17, CIFAR-10 Batch 3:  Loss:     1.5516 Validation Accuracy: 0.418317
+Epoch 17, CIFAR-10 Batch 4:  Loss:     1.5409 Validation Accuracy: 0.429455
+Epoch 17, CIFAR-10 Batch 5:  Loss:     1.5712 Validation Accuracy: 0.443069
+Epoch 18, CIFAR-10 Batch 1:  Loss:     1.6270 Validation Accuracy: 0.386139
+Epoch 18, CIFAR-10 Batch 2:  Loss:     1.5600 Validation Accuracy: 0.428218
+Epoch 18, CIFAR-10 Batch 3:  Loss:     1.5397 Validation Accuracy: 0.433168
+Epoch 18, CIFAR-10 Batch 4:  Loss:     1.5299 Validation Accuracy: 0.433168
+Epoch 18, CIFAR-10 Batch 5:  Loss:     1.5514 Validation Accuracy: 0.441832
+Epoch 19, CIFAR-10 Batch 1:  Loss:     1.6108 Validation Accuracy: 0.413366
+Epoch 19, CIFAR-10 Batch 2:  Loss:     1.5498 Validation Accuracy: 0.441832
+Epoch 19, CIFAR-10 Batch 3:  Loss:     1.5253 Validation Accuracy: 0.438119
+Epoch 19, CIFAR-10 Batch 4:  Loss:     1.5149 Validation Accuracy: 0.439356
+Epoch 19, CIFAR-10 Batch 5:  Loss:     1.5359 Validation Accuracy: 0.452970
+Epoch 20, CIFAR-10 Batch 1:  Loss:     1.5922 Validation Accuracy: 0.433168
+Epoch 20, CIFAR-10 Batch 2:  Loss:     1.5378 Validation Accuracy: 0.446782
+Epoch 20, CIFAR-10 Batch 3:  Loss:     1.5094 Validation Accuracy: 0.448020
+Epoch 20, CIFAR-10 Batch 4:  Loss:     1.4994 Validation Accuracy: 0.450495
+Epoch 20, CIFAR-10 Batch 5:  Loss:     1.5216 Validation Accuracy: 0.449257
+Epoch 21, CIFAR-10 Batch 1:  Loss:     1.5792 Validation Accuracy: 0.430693
+Epoch 21, CIFAR-10 Batch 2:  Loss:     1.5265 Validation Accuracy: 0.454208
+Epoch 21, CIFAR-10 Batch 3:  Loss:     1.4946 Validation Accuracy: 0.454208
+Epoch 21, CIFAR-10 Batch 4:  Loss:     1.4835 Validation Accuracy: 0.452970
+Epoch 21, CIFAR-10 Batch 5:  Loss:     1.5120 Validation Accuracy: 0.436881
+Epoch 22, CIFAR-10 Batch 1:  Loss:     1.5675 Validation Accuracy: 0.439356
+Epoch 22, CIFAR-10 Batch 2:  Loss:     1.5155 Validation Accuracy: 0.461634
+Epoch 22, CIFAR-10 Batch 3:  Loss:     1.4810 Validation Accuracy: 0.457921
+Epoch 22, CIFAR-10 Batch 4:  Loss:     1.4660 Validation Accuracy: 0.465347
+Epoch 22, CIFAR-10 Batch 5:  Loss:     1.4993 Validation Accuracy: 0.450495
+Epoch 23, CIFAR-10 Batch 1:  Loss:     1.5569 Validation Accuracy: 0.426980
+Epoch 23, CIFAR-10 Batch 2:  Loss:     1.5046 Validation Accuracy: 0.476485
+Epoch 23, CIFAR-10 Batch 3:  Loss:     1.4657 Validation Accuracy: 0.464109
+Epoch 23, CIFAR-10 Batch 4:  Loss:     1.4475 Validation Accuracy: 0.471535
+Epoch 23, CIFAR-10 Batch 5:  Loss:     1.4885 Validation Accuracy: 0.451733
+Epoch 24, CIFAR-10 Batch 1:  Loss:     1.5450 Validation Accuracy: 0.431931
+Epoch 24, CIFAR-10 Batch 2:  Loss:     1.4962 Validation Accuracy: 0.478960
+Epoch 24, CIFAR-10 Batch 3:  Loss:     1.4505 Validation Accuracy: 0.477723
+Epoch 24, CIFAR-10 Batch 4:  Loss:     1.4364 Validation Accuracy: 0.469059
+Epoch 24, CIFAR-10 Batch 5:  Loss:     1.4781 Validation Accuracy: 0.455446
+Epoch 25, CIFAR-10 Batch 1:  Loss:     1.5377 Validation Accuracy: 0.440594
+Epoch 25, CIFAR-10 Batch 2:  Loss:     1.4847 Validation Accuracy: 0.478960
+Epoch 25, CIFAR-10 Batch 3:  Loss:     1.4392 Validation Accuracy: 0.482673
+Epoch 25, CIFAR-10 Batch 4:  Loss:     1.4254 Validation Accuracy: 0.485149
+Epoch 25, CIFAR-10 Batch 5:  Loss:     1.4625 Validation Accuracy: 0.469059
+Epoch 26, CIFAR-10 Batch 1:  Loss:     1.5283 Validation Accuracy: 0.440594
+Epoch 26, CIFAR-10 Batch 2:  Loss:     1.4775 Validation Accuracy: 0.472772
+Epoch 26, CIFAR-10 Batch 3:  Loss:     1.4284 Validation Accuracy: 0.482673
+Epoch 26, CIFAR-10 Batch 4:  Loss:     1.4136 Validation Accuracy: 0.481436
+Epoch 26, CIFAR-10 Batch 5:  Loss:     1.4519 Validation Accuracy: 0.485149
+Epoch 27, CIFAR-10 Batch 1:  Loss:     1.5203 Validation Accuracy: 0.440594
+Epoch 27, CIFAR-10 Batch 2:  Loss:     1.4684 Validation Accuracy: 0.470297
+Epoch 27, CIFAR-10 Batch 3:  Loss:     1.4185 Validation Accuracy: 0.491337
+Epoch 27, CIFAR-10 Batch 4:  Loss:     1.4050 Validation Accuracy: 0.485149
+Epoch 27, CIFAR-10 Batch 5:  Loss:     1.4398 Validation Accuracy: 0.493812
+Epoch 28, CIFAR-10 Batch 1:  Loss:     1.5101 Validation Accuracy: 0.449257
+Epoch 28, CIFAR-10 Batch 2:  Loss:     1.4607 Validation Accuracy: 0.478960
+Epoch 28, CIFAR-10 Batch 3:  Loss:     1.4082 Validation Accuracy: 0.488861
+Epoch 28, CIFAR-10 Batch 4:  Loss:     1.3983 Validation Accuracy: 0.486386
+Epoch 28, CIFAR-10 Batch 5:  Loss:     1.4290 Validation Accuracy: 0.501238
+Epoch 29, CIFAR-10 Batch 1:  Loss:     1.5046 Validation Accuracy: 0.448020
+Epoch 29, CIFAR-10 Batch 2:  Loss:     1.4561 Validation Accuracy: 0.482673
+Epoch 29, CIFAR-10 Batch 3:  Loss:     1.4010 Validation Accuracy: 0.483911
+Epoch 29, CIFAR-10 Batch 4:  Loss:     1.3923 Validation Accuracy: 0.487624
+Epoch 29, CIFAR-10 Batch 5:  Loss:     1.4190 Validation Accuracy: 0.503713
+Epoch 30, CIFAR-10 Batch 1:  Loss:     1.4975 Validation Accuracy: 0.452970
+Epoch 30, CIFAR-10 Batch 2:  Loss:     1.4496 Validation Accuracy: 0.481436
+Epoch 30, CIFAR-10 Batch 3:  Loss:     1.3937 Validation Accuracy: 0.493812
+Epoch 30, CIFAR-10 Batch 4:  Loss:     1.3886 Validation Accuracy: 0.485149
+Epoch 30, CIFAR-10 Batch 5:  Loss:     1.4120 Validation Accuracy: 0.498762
+Epoch 31, CIFAR-10 Batch 1:  Loss:     1.4908 Validation Accuracy: 0.450495
+Epoch 31, CIFAR-10 Batch 2:  Loss:     1.4434 Validation Accuracy: 0.482673
+Epoch 31, CIFAR-10 Batch 3:  Loss:     1.3885 Validation Accuracy: 0.497525
+Epoch 31, CIFAR-10 Batch 4:  Loss:     1.3839 Validation Accuracy: 0.480198
+Epoch 31, CIFAR-10 Batch 5:  Loss:     1.4051 Validation Accuracy: 0.503713
+Epoch 32, CIFAR-10 Batch 1:  Loss:     1.4841 Validation Accuracy: 0.455446
+Epoch 32, CIFAR-10 Batch 2:  Loss:     1.4369 Validation Accuracy: 0.477723
+Epoch 32, CIFAR-10 Batch 3:  Loss:     1.3836 Validation Accuracy: 0.496287
+Epoch 32, CIFAR-10 Batch 4:  Loss:     1.3828 Validation Accuracy: 0.481436
+Epoch 32, CIFAR-10 Batch 5:  Loss:     1.4002 Validation Accuracy: 0.503713
+Epoch 33, CIFAR-10 Batch 1:  Loss:     1.4799 Validation Accuracy: 0.455446
+Epoch 33, CIFAR-10 Batch 2:  Loss:     1.4304 Validation Accuracy: 0.477723
+Epoch 33, CIFAR-10 Batch 3:  Loss:     1.3775 Validation Accuracy: 0.496287
+Epoch 33, CIFAR-10 Batch 4:  Loss:     1.3774 Validation Accuracy: 0.491337
+Epoch 33, CIFAR-10 Batch 5:  Loss:     1.3938 Validation Accuracy: 0.503713
+Epoch 34, CIFAR-10 Batch 1:  Loss:     1.4738 Validation Accuracy: 0.456683
+Epoch 34, CIFAR-10 Batch 2:  Loss:     1.4261 Validation Accuracy: 0.485149
+Epoch 34, CIFAR-10 Batch 3:  Loss:     1.3727 Validation Accuracy: 0.500000
+Epoch 34, CIFAR-10 Batch 4:  Loss:     1.3725 Validation Accuracy: 0.497525
+Epoch 34, CIFAR-10 Batch 5:  Loss:     1.3880 Validation Accuracy: 0.506188
+Epoch 35, CIFAR-10 Batch 1:  Loss:     1.4679 Validation Accuracy: 0.457921
+Epoch 35, CIFAR-10 Batch 2:  Loss:     1.4218 Validation Accuracy: 0.486386
+Epoch 35, CIFAR-10 Batch 3:  Loss:     1.3673 Validation Accuracy: 0.508663
+Epoch 35, CIFAR-10 Batch 4:  Loss:     1.3677 Validation Accuracy: 0.502475
+Epoch 35, CIFAR-10 Batch 5:  Loss:     1.3829 Validation Accuracy: 0.506188
+Epoch 36, CIFAR-10 Batch 1:  Loss:     1.4626 Validation Accuracy: 0.461634
+Epoch 36, CIFAR-10 Batch 2:  Loss:     1.4182 Validation Accuracy: 0.482673
+Epoch 36, CIFAR-10 Batch 3:  Loss:     1.3630 Validation Accuracy: 0.503713
+Epoch 36, CIFAR-10 Batch 4:  Loss:     1.3630 Validation Accuracy: 0.509901
+Epoch 36, CIFAR-10 Batch 5:  Loss:     1.3765 Validation Accuracy: 0.507426
+Epoch 37, CIFAR-10 Batch 1:  Loss:     1.4565 Validation Accuracy: 0.462871
+Epoch 37, CIFAR-10 Batch 2:  Loss:     1.4163 Validation Accuracy: 0.486386
+Epoch 37, CIFAR-10 Batch 3:  Loss:     1.3591 Validation Accuracy: 0.503713
+Epoch 37, CIFAR-10 Batch 4:  Loss:     1.3573 Validation Accuracy: 0.511139
+Epoch 37, CIFAR-10 Batch 5:  Loss:     1.3709 Validation Accuracy: 0.512376
+Epoch 38, CIFAR-10 Batch 1:  Loss:     1.4496 Validation Accuracy: 0.462871
+Epoch 38, CIFAR-10 Batch 2:  Loss:     1.4121 Validation Accuracy: 0.485149
+Epoch 38, CIFAR-10 Batch 3:  Loss:     1.3523 Validation Accuracy: 0.502475
+Epoch 38, CIFAR-10 Batch 4:  Loss:     1.3540 Validation Accuracy: 0.509901
+Epoch 38, CIFAR-10 Batch 5:  Loss:     1.3642 Validation Accuracy: 0.513614
+Epoch 39, CIFAR-10 Batch 1:  Loss:     1.4439 Validation Accuracy: 0.469059
+Epoch 39, CIFAR-10 Batch 2:  Loss:     1.4087 Validation Accuracy: 0.492574
+Epoch 39, CIFAR-10 Batch 3:  Loss:     1.3468 Validation Accuracy: 0.507426
+Epoch 39, CIFAR-10 Batch 4:  Loss:     1.3492 Validation Accuracy: 0.511139
+Epoch 39, CIFAR-10 Batch 5:  Loss:     1.3589 Validation Accuracy: 0.514852
+Epoch 40, CIFAR-10 Batch 1:  Loss:     1.4380 Validation Accuracy: 0.471535
+Epoch 40, CIFAR-10 Batch 2:  Loss:     1.4059 Validation Accuracy: 0.495050
+Epoch 40, CIFAR-10 Batch 3:  Loss:     1.3420 Validation Accuracy: 0.511139
+Epoch 40, CIFAR-10 Batch 4:  Loss:     1.3465 Validation Accuracy: 0.511139
 </pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-19-9df3032ebe9d&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     14</span>         n_batches <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">5</span>
-<span class="ansi-green-intense-fg ansi-bold">     15</span>         <span class="ansi-green-intense-fg ansi-bold">for</span> batch_i <span class="ansi-green-intense-fg ansi-bold">in</span> range<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> n_batches <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">---&gt; 16</span><span class="ansi-red-fg">             </span><span class="ansi-green-intense-fg ansi-bold">for</span> batch_features<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_labels <span class="ansi-green-intense-fg ansi-bold">in</span> helper<span class="ansi-yellow-intense-fg ansi-bold">.</span>load_preprocess_training_batch<span class="ansi-yellow-intense-fg ansi-bold">(</span>batch_i<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_size<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     17</span>                 train_neural_network<span class="ansi-yellow-intense-fg ansi-bold">(</span>sess<span class="ansi-yellow-intense-fg ansi-bold">,</span> optimizer<span class="ansi-yellow-intense-fg ansi-bold">,</span> keep_probability<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_features<span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_labels<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     18</span>             print<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#39;Epoch {:&gt;2}, CIFAR-10 Batch {}:  &#39;</span><span class="ansi-yellow-intense-fg ansi-bold">.</span>format<span class="ansi-yellow-intense-fg ansi-bold">(</span>epoch <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_i<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> end<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">&#39;&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-fg">C:\Users\Andreas\Documents\GitHub\deep-learning\image-classification\helper.py</span> in <span class="ansi-cyan-fg">batch_features_labels</span><span class="ansi-blue-fg">(features, labels, batch_size)</span>
-<span class="ansi-green-intense-fg ansi-bold">    122</span>     <span class="ansi-green-intense-fg ansi-bold">for</span> start <span class="ansi-green-intense-fg ansi-bold">in</span> range<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-cyan-intense-fg ansi-bold">0</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>features<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> batch_size<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    123</span>         end <span class="ansi-yellow-intense-fg ansi-bold">=</span> min<span class="ansi-yellow-intense-fg ansi-bold">(</span>start <span class="ansi-yellow-intense-fg ansi-bold">+</span> batch_size<span class="ansi-yellow-intense-fg ansi-bold">,</span> len<span class="ansi-yellow-intense-fg ansi-bold">(</span>features<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-fg">--&gt; 124</span><span class="ansi-red-fg">         </span><span class="ansi-green-intense-fg ansi-bold">yield</span> features<span class="ansi-yellow-intense-fg ansi-bold">[</span>start<span class="ansi-yellow-intense-fg ansi-bold">:</span>end<span class="ansi-yellow-intense-fg ansi-bold">]</span><span class="ansi-yellow-intense-fg ansi-bold">,</span> labels<span class="ansi-yellow-intense-fg ansi-bold">[</span>start<span class="ansi-yellow-intense-fg ansi-bold">:</span>end<span class="ansi-yellow-intense-fg ansi-bold">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    125</span> 
-<span class="ansi-green-intense-fg ansi-bold">    126</span> 
-
-<span class="ansi-red-fg">TypeError</span>: &#39;NoneType&#39; object is not subscriptable</pre>
 </div>
 </div>
 
@@ -13254,7 +13457,7 @@ Keep Prob Tests Passed.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -13323,50 +13526,6 @@ Keep Prob Tests Passed.
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-20-46737803360c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     61</span> 
-<span class="ansi-green-intense-fg ansi-bold">     62</span> 
-<span class="ansi-green-fg">---&gt; 63</span><span class="ansi-red-fg"> </span>test_model<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-green-fg">&lt;ipython-input-20-46737803360c&gt;</span> in <span class="ansi-cyan-fg">test_model</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-intense-fg ansi-bold">     31</span>     <span class="ansi-green-intense-fg ansi-bold">with</span> tf<span class="ansi-yellow-intense-fg ansi-bold">.</span>Session<span class="ansi-yellow-intense-fg ansi-bold">(</span>graph<span class="ansi-yellow-intense-fg ansi-bold">=</span>loaded_graph<span class="ansi-yellow-intense-fg ansi-bold">)</span> <span class="ansi-green-intense-fg ansi-bold">as</span> sess<span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     32</span>         <span class="ansi-red-intense-fg ansi-bold"># Load model</span>
-<span class="ansi-green-fg">---&gt; 33</span><span class="ansi-red-fg">         </span>loader <span class="ansi-yellow-intense-fg ansi-bold">=</span> tf<span class="ansi-yellow-intense-fg ansi-bold">.</span>train<span class="ansi-yellow-intense-fg ansi-bold">.</span>import_meta_graph<span class="ansi-yellow-intense-fg ansi-bold">(</span>save_model_path <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-blue-intense-fg ansi-bold">&#39;.meta&#39;</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     34</span>         loader<span class="ansi-yellow-intense-fg ansi-bold">.</span>restore<span class="ansi-yellow-intense-fg ansi-bold">(</span>sess<span class="ansi-yellow-intense-fg ansi-bold">,</span> save_model_path<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     35</span> 
-
-<span class="ansi-green-fg">C:\Program Files\Anaconda3\envs\dlnd-tf-lab\lib\site-packages\tensorflow\python\training\saver.py</span> in <span class="ansi-cyan-fg">import_meta_graph</span><span class="ansi-blue-fg">(meta_graph_or_file, clear_devices, import_scope, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1568</span>   &#34;&#34;&#34;
-<span class="ansi-green-intense-fg ansi-bold">   1569</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> isinstance<span class="ansi-yellow-intense-fg ansi-bold">(</span>meta_graph_or_file<span class="ansi-yellow-intense-fg ansi-bold">,</span> meta_graph_pb2<span class="ansi-yellow-intense-fg ansi-bold">.</span>MetaGraphDef<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">-&gt; 1570</span><span class="ansi-red-fg">     </span>meta_graph_def <span class="ansi-yellow-intense-fg ansi-bold">=</span> meta_graph<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_meta_graph_file<span class="ansi-yellow-intense-fg ansi-bold">(</span>meta_graph_or_file<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">   1571</span>   <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-intense-fg ansi-bold">   1572</span>     meta_graph_def <span class="ansi-yellow-intense-fg ansi-bold">=</span> meta_graph_or_file
-
-<span class="ansi-green-fg">C:\Program Files\Anaconda3\envs\dlnd-tf-lab\lib\site-packages\tensorflow\python\framework\meta_graph.py</span> in <span class="ansi-cyan-fg">read_meta_graph_file</span><span class="ansi-blue-fg">(filename)</span>
-<span class="ansi-green-intense-fg ansi-bold">    400</span>   meta_graph_def <span class="ansi-yellow-intense-fg ansi-bold">=</span> meta_graph_pb2<span class="ansi-yellow-intense-fg ansi-bold">.</span>MetaGraphDef<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    401</span>   <span class="ansi-green-intense-fg ansi-bold">if</span> <span class="ansi-green-intense-fg ansi-bold">not</span> file_io<span class="ansi-yellow-intense-fg ansi-bold">.</span>file_exists<span class="ansi-yellow-intense-fg ansi-bold">(</span>filename<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">--&gt; 402</span><span class="ansi-red-fg">     </span><span class="ansi-green-intense-fg ansi-bold">raise</span> IOError<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">&#34;File %s does not exist.&#34;</span> <span class="ansi-yellow-intense-fg ansi-bold">%</span> filename<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    403</span>   <span class="ansi-red-intense-fg ansi-bold"># First try to read it as a binary file.</span>
-<span class="ansi-green-intense-fg ansi-bold">    404</span>   file_content <span class="ansi-yellow-intense-fg ansi-bold">=</span> file_io<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_file_to_string<span class="ansi-yellow-intense-fg ansi-bold">(</span>filename<span class="ansi-yellow-intense-fg ansi-bold">)</span>
-
-<span class="ansi-red-fg">OSError</span>: File ./image_classification.meta does not exist.</pre>
-</div>
-</div>
-
 </div>
 </div>
 
