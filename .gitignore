@@ -54,3 +54,6 @@ Temporary Items
 .~*
 .ipynb_checkpoints
 
+/face_generation/data/img_align_celeba
+/face_generation/data/mnist
+/image-classification/cifar-10-batches-py
