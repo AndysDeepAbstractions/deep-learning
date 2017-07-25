@@ -11654,10 +11654,8 @@ ul.typeahead-list > li > a {
 .highlight .mh { color: #666666 } /* Literal.Number.Hex */
 .highlight .mi { color: #666666 } /* Literal.Number.Integer */
 .highlight .mo { color: #666666 } /* Literal.Number.Oct */
-.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
 .highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
 .highlight .sc { color: #BA2121 } /* Literal.String.Char */
-.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
 .highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
 .highlight .s2 { color: #BA2121 } /* Literal.String.Double */
 .highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
@@ -11668,11 +11666,9 @@ ul.typeahead-list > li > a {
 .highlight .s1 { color: #BA2121 } /* Literal.String.Single */
 .highlight .ss { color: #19177C } /* Literal.String.Symbol */
 .highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.highlight .fm { color: #0000FF } /* Name.Function.Magic */
 .highlight .vc { color: #19177C } /* Name.Variable.Class */
 .highlight .vg { color: #19177C } /* Name.Variable.Global */
 .highlight .vi { color: #19177C } /* Name.Variable.Instance */
-.highlight .vm { color: #19177C } /* Name.Variable.Magic */
 .highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
     </style>
 <style type="text/css">
@@ -11713,6 +11709,9 @@ ul.typeahead-list > li > a {
 
 .ansi-bold { font-weight: bold; }
 
+    </style>
+<style type="text/css">
+    
     </style>
 
 
@@ -13494,8 +13493,12 @@ barflies: hey hey hey / goodbye
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-TV-Script-is-Nonsensical">The TV Script is Nonsensical<a class="anchor-link" href="#The-TV-Script-is-Nonsensical">&#182;</a></h1><p>It's ok if the TV script doesn't make any sense.  We trained on less than a megabyte of text.  In order to get good results, you'll have to use a smaller vocabulary or get more data.  Luckly there's more data!  As we mentioned in the begging of this project, this is a subset of <a href="https://www.kaggle.com/wcukierski/the-simpsons-by-the-data">another dataset</a>.  We didn't have you train on all the data, because that would take too long.  However, you are free to train your neural network on all the data.  After you complete the project, of course.</p>
-<h1 id="Submitting-This-Project">Submitting This Project<a class="anchor-link" href="#Submitting-This-Project">&#182;</a></h1><p>When submitting this project, make sure to run all the cells before saving the notebook. Save the notebook file as "dlnd_tv_script_generation.ipynb" and save it as a HTML file under "File" -&gt; "Download as". Include the "helper.py" and "problem_unittests.py" files in your submission.</p>
+<h1 id="Further-optimisation-for-The-TV-Script">Further optimisation for The TV Script<a class="anchor-link" href="#Further-optimisation-for-The-TV-Script">&#182;</a></h1><ol>
+<li>Add more Data, The used Dataset is a subset of <a href="https://www.kaggle.com/wcukierski/the-simpsons-by-the-data">another dataset</a>.  It wasn't trained on all the data, because that would take too much time and ressources.</li>
+<li>Add LSTM Layers, seq_len &amp; Epochs (more should be at least somehow better, but will increase the computationally effort)</li>
+<li>Finetune batch_size,rnn_size &amp; learningrate</li>
+</ol>
+<p>Feel free to fork and/or contrbute!</p>
 
 </div>
 </div>
